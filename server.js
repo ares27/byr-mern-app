@@ -16,13 +16,8 @@ const mongoURI = 'mongodb+srv://admin:admin@mydatacluster-4usfy.mongodb.net/test
 
 
 
-
-
-
-
-
 //connect to MONGOOSE
-mongoose.connect('mongodb://localhost/blogposts', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/blogposts', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -51,6 +46,13 @@ app.use('/api', routes);
 
 
 
+
+
+
+//step 3 - check if app in on Heroku
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('/client/build'));
+}
 
 
 //run server
