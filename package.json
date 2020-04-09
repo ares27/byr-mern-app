@@ -1,0 +1,24 @@
+{
+  "name": "byr-mern-app",
+  "version": "1.0.0",
+  "description": "My 1st MERN stack app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ares27/byr-mern-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ares27/byr-mern-app/issues"
+  },
+  "homepage": "https://github.com/ares27/byr-mern-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
