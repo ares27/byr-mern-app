@@ -51,7 +51,8 @@ app.use('/api', routes);
 
 //step 3 - check if app in on Heroku
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('/client/build'));
+    //app.use(express.static('/client/build'));
+    app.use(express.static(path.join(__dirname, 'client/build')))
 }
 
 
