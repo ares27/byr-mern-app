@@ -11,13 +11,13 @@ const PORT = process.env.PORT || 8000;
 
 //mongodbURI
 const mongoURI = 'mongodb+srv://admin:admin@mydatacluster-4usfy.mongodb.net/test?retryWrites=true&w=majority';
-
-
+const mlabURI = 'mongodb://admin:admin_27@ds129010.mlab.com:29010/heroku_ztvc6xnx';
+const localDB = 'mongodb://localhost/blogposts';
 
 
 
 //connect to MONGOOSE
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/blogposts', {
+mongoose.connect(process.env.MONGODB_URI || mlabURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
