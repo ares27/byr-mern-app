@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../App.css';
 //import reactstrap components
 import { Alert, Button } from "reactstrap";
 
@@ -121,7 +122,7 @@ class MyForm extends Component {
         //console.log("state: ", this.state);
 
         return ( 
-            <div>
+            <div className="app">
                 <form onSubmit={this.submit}>
                     <div className="form-input">
                         <input

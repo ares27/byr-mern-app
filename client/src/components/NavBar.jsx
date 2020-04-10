@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-
+import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -15,34 +14,21 @@ const Styles = styled.div`
         &:hover {
             color: white;
         }
-    }
+    }  
 `;
 
-const NavBar = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
+export const NavBar = () => (
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
-
-  return (
-    <div>
-      <Styles>
-        <Navbar color="faded" light>
-          <NavbarBrand href="/" className="mr-auto">BYR-MERN</NavbarBrand>
-          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">My GitHub</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+    <Styles>
+        <Navbar expand="lg">
+            <Navbar.Brand href="/">Code Life</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" />
+                <Nav className="ml-auto">
+                    <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link href="/posts">Posts</Nav.Link></Nav.Item>
+                    {/* <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item> */}
+                </Nav>
         </Navbar>
-      </Styles>
-    </div>
-  );
-}
-
-export default NavBar;
+    </Styles>
+)

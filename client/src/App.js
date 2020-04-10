@@ -1,10 +1,17 @@
 import React from 'react';
 import './App.css';
 
-//import components
-import NavBar  from "./components/NavBar";
-import MyForm  from "./components/Form";
+//import router
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+//import components
+import { NavBar }  from "./components/NavBar";
+import MyForm  from "./components/Form";
+import { Jumbotron } from './components/jumbotron';
+
+//import routes
+import { Home } from './components/Home';
+import { NoMatch } from './components/nomatch';
 
 
 
@@ -20,13 +27,20 @@ class App extends React.Component {
     return (  
       <React.Fragment>
           <NavBar/>
+          <Jumbotron />
+              <Router>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/posts" component={MyForm} />
+                  <Route component={NoMatch} />
+                  {/* <Route path="/about" component={About} /> */}
+                </Switch>
+            </Router>
           
-          <div className="app">
-            <h4>The MERN Stack</h4>
-            <p>You can participate by giving your post a title and a body, and then click submit.</p>
-            
+          
+          {/* <div className="app">           
             <MyForm></MyForm>              
-          </div>
+          </div> */}
 
       </React.Fragment>
     );
