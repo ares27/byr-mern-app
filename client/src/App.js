@@ -2,6 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 
+
+//import reactstrap components
+import { Button } from "reactstrap";
+import Example  from "./components/NavBar";
+
+
 class App extends React.Component {
   
   //contain form values
@@ -31,7 +37,6 @@ class App extends React.Component {
       });
   }
   
-
   //handle change function, DOM change
   handleChange = (e) => {
 
@@ -110,38 +115,47 @@ class App extends React.Component {
     console.log("state: ", this.state);
 
     return (  
-      <div className="app">
-        <h2>The MERN Stack</h2>
-        <form onSubmit={this.submit}>
+      <React.Fragment>
+          <Example/>
+          <div className="app">
+            <h4>The MERN Stack</h4>
+            <p>You can participate by giving your message post a title and a body and then click submit.</p>
+            <form onSubmit={this.submit}>
 
-          <div className="form-input">
-            <input
-            type="text"
-            name="title"
-            placeholder="Title: "
-            value={this.state.title}
-            onChange={this.handleChange}>
-            </input>
-          </div>
-          
-          <div className="form-input">
-            <textarea name="body" cols="30" rows="10" 
-              value={this.state.body} 
-              onChange={this.handleChange} 
-              placeholder="Write something...">
+              <div className="form-input">
+                <input
+                type="text"
+                name="title"
+                placeholder="Title: "
+                value={this.state.title}
+                onChange={this.handleChange}>
+                </input>
+              </div>
+              
+              <div className="form-input">
+                <textarea name="body" cols="30" rows="10" 
+                  value={this.state.body} 
+                  onChange={this.handleChange} 
+                  placeholder="Write something...">
+                
+                </textarea>
+              </div>
+
+              {/* <button>Submit</button> */}
+              <Button color="primary">SUBMIT</Button>
+            </form>  
+
             
-            </textarea>
+
+            <div className="blog-post">
+              {this.displayBlogPost(this.state.posts)}
+            </div>
+
+            
+            
           </div>
 
-          <button>Submit</button>
-        </form>  
-
-        <div className="blog-post">
-          {this.displayBlogPost(this.state.posts)}
-        </div>
-
-        
-      </div>
+      </React.Fragment>
     );
   
   
