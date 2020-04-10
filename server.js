@@ -50,13 +50,22 @@ app.use('/api', routes);
 
 
 //step 3 - check if app on Heroku
+// How to serve the application - when in production and dev
 if(process.env.NODE_ENV === 'production') {
     //app.use(express.static('/client/build'));
     app.use(express.static(path.join(__dirname, 'client/build')));
+    
+    //when serving every request after home route - for react-router
     app.get("/*", function(req, res) {
         res.sendFile(path.join(__dirname, "client/build/index.html"));
     });
 }
+// else {
+//     app.use(express.static(path.join(__dirname, '/client/public')));
+//     app.get("/*", function(req, res) {
+//       res.sendFile(path.join(__dirname, "./client/public/index.html"));
+//     });
+// }
 
 
 //run server
