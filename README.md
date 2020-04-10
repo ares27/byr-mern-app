@@ -1,2 +1,2 @@
 # byr-mern-app
-My MERN stack app.
+My first MERN stack app.
