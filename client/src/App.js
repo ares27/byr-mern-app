@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 //import components
-import Example  from "./components/NavBar";
+import NavBar  from "./components/NavBar";
 import MyForm  from "./components/Form";
 
 
@@ -19,7 +19,7 @@ class App extends React.Component {
 
     return (  
       <React.Fragment>
-          <Example/>
+          <NavBar/>
           
           <div className="app">
             <h4>The MERN Stack</h4>

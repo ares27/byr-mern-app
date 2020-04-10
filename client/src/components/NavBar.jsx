@@ -18,7 +18,7 @@ const Styles = styled.div`
     }
 `;
 
-const Example = (props) => {
+const NavBar = (props) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -45,4 +45,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default NavBar;
