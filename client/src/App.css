@@ -30,9 +30,30 @@ form {
   cursor: pointer;
 } */
 
+.homeBtns {
+  width: 100px;
+  margin: 5px;
+}
+
 .blog-post_display {
   border: 1px solid gray;
   margin: 5px 0px;
   border-radius: 4px;
   padding: 10px;
+}
+
+
+
+
+
+
+
+
+.covid19-card {
+  padding: 25px;
+}
+
+.covid19-card:hover {
+  
+  border-color: red;
 }
