@@ -52,31 +52,33 @@ class COVID19News extends Component {
             <Container fluid
             className="p-3">
 
-            <Alert color='warning'>
-                COVID-19 data and information sourced at <a href="https://sacoronavirus.co.za/">https://sacoronavirus.co.za/</a>
-            </Alert>
+            
 
-                <Container
-                className="">
-                    
-                    <Row className="text-center">
+                <Container>
+                    <Alert 
+                    className="text-center"
+                    color='warning'>
+                        COVID-19 data and information sourced at <a href="https://sacoronavirus.co.za/">https://sacoronavirus.co.za/</a>
+                    </Alert>
+
+                    <Row className="pl-5">
                         
-                        <Col>
+                        <Col md={4}
+                        className="justify-content-center text-center">
                             <Card 
                             style={{ width: '18rem' }}
                             className="covid19-card">
-                                <Card.Img variant="top" src={infectedImg} />
+                                <Card.Img variant="top" src={infectedImg}/>
                                 <Card.Body>
-        <Card.Title
-        className="card-title"><h2>{cases}</h2></Card.Title>
-                                    <Card.Text>
-                                    INFECTED
-                                    </Card.Text>
+                                <Card.Title
+                                className="card-title"><h2>{cases}</h2></Card.Title>
+                                <Card.Text>INFECTED</Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                         
-                        <Col>
+                        <Col md={4}
+                        className="justify-content-center text-center">
                         <Card style={{ width: '18rem' }}
                         className="covid19-card">
                             <Card.Img variant="top" src={recoveredImg} />
@@ -92,7 +94,8 @@ class COVID19News extends Component {
                             </Card>
                         </Col>
 
-                        <Col>
+                        <Col md={4}
+                        className="justify-content-center text-center">
                         <Card style={{ width: '18rem' }}
                         className="covid19-card">
                             <Card.Img variant="top" src={deathImg} />
