@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../App.css';
 //import reactstrap components
 import { Alert, Button } from "reactstrap";
+import { Card, Form } from 'react-bootstrap';
 
 class MyForm extends Component {
     
@@ -104,7 +105,7 @@ class MyForm extends Component {
             return posts.map((post, index) => (
 
                 <div key={index} className="blog-post_display">                
-                    <h3>{post.title}</h3>
+                    <h4>{post.title}</h4>
                     <p>{post.body}</p>
                     {/* <small>Date Captured: {Date(post.date)}</small>  */}
                 </div>
@@ -121,9 +122,15 @@ class MyForm extends Component {
         //const { username, comments, topic } = this.state;
         //console.log("state: ", this.state);
 
-        return ( 
+        return (
+            
+            <React.Fragment>
+                        
+
             <div className="app">
-                <form onSubmit={this.submit}>
+            <h4>Comment</h4>
+            <form onSubmit={this.submit}>
+                
                     <div className="form-input">
                         <input
                         type="text"
@@ -141,14 +148,15 @@ class MyForm extends Component {
                         placeholder="Write something...">  
                         </textarea>
                     </div>
-
-                  <Button color="primary">SUBMIT</Button>
+                    <Button color="primary">SUBMIT</Button>
                 </form>  
 
                  <div className="blog-post">
                     {this.displayBlogPost(this.state.posts)}
                  </div>        
             </div>
+
+            </React.Fragment>
          );
     }
 }

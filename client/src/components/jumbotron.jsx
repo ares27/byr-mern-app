@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import myImg from '../assets/cosmic-sky.jpg';
@@ -6,13 +7,14 @@ import myImg from '../assets/cosmic-sky.jpg';
 const Styles = styled.div`
 
     .jumbo {
-        
+
         background: url(${myImg}) no-repeat fixed bottom;
         background-size: cover;
         color: #fff;
         height: 250px;
         position: relative;
         z-index: -2;
+        padding: 30px 20px;
     }
 
     .overlay {
@@ -27,22 +29,73 @@ const Styles = styled.div`
         z-index: -1;
     }
 
-    h1, p {
-        margin-left: 10px;
+    p {
+        font-size: 20px;
+        
     }
 
 `;
 
-export const Jumbotron = () => (
+class Jumbotron extends Component {
+    
+    state = { quotes: null, randomQuote: [] }
 
-    <Styles>
-        <Jumbo fluid className="jumbo">
-        <div className="overlay"></div>
-        {/* <Container> */}
-            <h1>The MERN Stack</h1>
-            <p>Check out the 'Posts' page.</p>
-            <p>You can participate by giving your post a title and a body, and then click submit.</p>
-        {/* </Container> */}
-        </Jumbo>
-    </Styles>
-)
+    
+    componentDidMount = () => {
+        this.getQuotes();
+    }
+
+    //GET QUOTES
+    getQuotes = () => {
+        axios.get('https://type.fit/api/quotes')
+         .then((response) => {
+            const data = response.data;       
+            //console.log("data: ", data);    
+
+            //set quotes
+            this.setState({ quotes: data });
+        
+            //randomise quote
+            const randomNum = Math.floor(Math.random() * this.state.quotes.length);
+            const randomQuote = this.state.quotes[randomNum];
+            //console.log("randomQuote", randomQuote);
+
+            //set random quote
+            this.setState({ randomQuote: randomQuote });
+         })
+         .catch((err)=> {
+            console.log("Could not get random quote: ", err);
+            //this.setState({ errorMsg: err.message });
+        });
+    }
+
+    render() { 
+        return ( 
+            <Styles>
+                <Jumbo fluid className="jumbo">
+                <div className="overlay"></div>
+                    {/* <Container> */}
+                    <p><h1>The MERN Stack</h1></p>
+                    
+                        <div>
+                            { !this.state.randomQuote ? ( <div>Loading a random quote...</div> ) : 
+                                ( 
+                                    <div>
+                                        <blockquote className="quote-card">
+                                        <p>"{this.state.randomQuote.text}"</p>
+                                        <p className="font-italic">- {this.state.randomQuote.author}</p>
+                                        </blockquote>
+                                    </div>   
+                                )
+                            }
+                        </div>
+                    
+                    {/* </Container> */}
+                </Jumbo>
+            </Styles>
+         );
+    }
+}
+ 
+export default Jumbotron;
+

@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import components
 import { NavBar }  from "./components/NavBar";
-import MyForm  from "./components/Form";
-import { Jumbotron } from './components/jumbotron';
+import MyForm from "./components/Form";
+import Jumbotron from './components/jumbotron';
 
 //import routes
-import { Home } from './components/Home';
+import Home from './components/Home';
 import { NoMatch } from './components/nomatch';
 
 
