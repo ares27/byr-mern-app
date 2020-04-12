@@ -46,10 +46,12 @@ form {
 
 
 
-
+.my-container-fluid {
+ 
+}
 
 
 .covid19-card {
-  padding: 25px;
+  /* padding: 25px; */
   
 }
