@@ -47,6 +47,7 @@ class COVID19News extends Component {
                 totalDeaths: data.deaths,
                 totalRecovered: data.recovered,
                 critical: data.critical,
+                todayCases: data.todayCases,
                 tests: data.tests            
             }
 
@@ -65,7 +66,7 @@ class COVID19News extends Component {
     render() { 
 
         //console.log("state: ", this.state);
-        const { totalActive, totalCases, totalDeaths, totalRecovered, critical, tests } = this.state.covidCases;
+        const { totalActive, totalCases, totalDeaths, totalRecovered, critical, tests, todayCases } = this.state.covidCases;
 
         return (
             
@@ -111,6 +112,7 @@ class COVID19News extends Component {
                     className="text-center"
                     color='warning'>
                         COVID-19 data and information sourced at <a href="https://sacoronavirus.co.za/">https://sacoronavirus.co.za/</a>
+                        <p>For more information, please visit <a href="https://sacoronavirus.co.za/">WHO</a>. Stay tuned, stay home, stay safe. </p>
                     </Alert>
 
                     <Row className="justify-content-center">
@@ -123,10 +125,10 @@ class COVID19News extends Component {
                             <Card 
                             style={{ width: '12rem', marginLeft: '20px' }}
                             className="shadow rounded
-                            -warning
+                            border-primary
                             covid19-card">
                                 <Card.Header>Total Cases</Card.Header>
-                                <div className="p-2">
+                                <div className="p-4">
                                 <Card.Img className="" variant="top" src={chartImg}/>
                                 </div>
                                 <Card.Body>
@@ -142,14 +144,17 @@ class COVID19News extends Component {
                         className="text-center pt-2">
                             <Card 
                             style={{ width: '12rem'}}
-                            className="shadow p-3 mb-5 bg-white rounded
-                            -warning
+                            className="shadow rounded
+                            border-warning
                             covid19-card">
+                                <Card.Header>Cases Today</Card.Header>
+                                <div className="p-4">
                                 <Card.Img variant="top" src={infectedImg}/>
+                                </div>
                                 <Card.Body>
                                 <Card.Title
-                                className="card-title"><h2>{totalCases}</h2></Card.Title>
-                                <Card.Text>INFECTIONS</Card.Text>
+                                className="card-title"><h2>{todayCases}</h2></Card.Title>
+                                {/* <Card.Text>INFECTIONS</Card.Text> */}
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -158,17 +163,18 @@ class COVID19News extends Component {
                         <Col md={3}
                         className="text-center pt-2">
                         <Card style={{ width: '12rem' }}
-                        className="shadow p-3 mb-5 bg-white rounded
-                        -info
+                        className="shadow rounded
+                        border-info
                         covid19-card">
+                            <Card.Header>Total Tested</Card.Header>
+                            <div className="p-4">
                             <Card.Img variant="top" src={testsImg} />
+                            </div>
                             <Card.Body>
                             <Card.Title 
                             className="card-title">
                                 <h2>{tests}</h2></Card.Title>
-                                <Card.Text>
-                                TOTAL TESTS
-                                </Card.Text>
+                                {/* <Card.Text>TOTAL TESTS</Card.Text> */}
                             </Card.Body>
                             </Card>
                         </Col>
@@ -177,17 +183,18 @@ class COVID19News extends Component {
                         <Col md={3}
                         className="text-center pt-2">
                         <Card style={{ width: '12rem'}}
-                        className="shadow p-3 mb-5 bg-white rounded
-                        -dark
+                        className="shadow rounded
+                        border-dark
                         covid19-card">
+                            <Card.Header>Active Cases</Card.Header>
+                            <div className="p-4">
                             <Card.Img variant="top" src={activeImg} />
+                            </div>
                             <Card.Body>
                                 <Card.Title
                                 className="card-title">
                                     <h2>{totalActive}</h2></Card.Title>
-                                <Card.Text>
-                                ACTIVE
-                                </Card.Text>
+                                {/* <Card.Text>ACTIVE</Card.Text> */}
                                 {/* <Button variant="primary">Go somewhere</Button> */}
                             </Card.Body>
                             </Card>
@@ -197,17 +204,18 @@ class COVID19News extends Component {
                         <Col md={3}
                         className="text-center pt-5">
                         <Card style={{ width: '12rem' }}
-                        className="shadow p-3 mb-5 bg-white rounded
-                        -success
+                        className="shadow rounded
+                        border-success
                         covid19-card">
+                            <Card.Header>Totol Recovered</Card.Header>
+                            <div className="p-4">
                             <Card.Img variant="top" src={recoveredImg} />
+                            </div>
                             <Card.Body>
                                 <Card.Title
                                 className="card-title">
                                     <h2>{totalRecovered}</h2></Card.Title>
-                                <Card.Text>
-                                RECOVERED
-                                </Card.Text>
+                               
                                 {/* <Button variant="primary">Go somewhere</Button> */}
                             </Card.Body>
                             </Card>
@@ -217,16 +225,16 @@ class COVID19News extends Component {
                         <Col md={3}
                         className="text-center pt-5">
                         <Card style={{ width: '12rem' }}
-                        className="shadow p-3 mb-5 bg-white rounded
-                        -danger
+                        className="shadow rounded
+                        border-warning
                         covid19-card">
+                            <Card.Header>Critical Cases</Card.Header>
+                            <div className="p-4">
                             <Card.Img variant="top" src={criticalImg} />
+                            </div>
                             <Card.Body>
                                 <Card.Title 
                                 className="card-title"><h2>{critical}</h2></Card.Title>
-                                <Card.Text>
-                                CRITICAL
-                                </Card.Text>
                             </Card.Body>
                         </Card>
                         </Col>
@@ -235,16 +243,16 @@ class COVID19News extends Component {
                         <Col md={3}
                         className="text-center pt-5">
                         <Card style={{ width: '12rem' }}
-                        className="shadow p-3 mb-5 bg-white rounded
-                        -danger
+                        className="shadow rounded
+                        border-danger
                         covid19-card">
+                            <Card.Header>Total Fatalities</Card.Header>
+                            <div className="p-4">
                             <Card.Img variant="top" src={deathImg} />
+                            </div>
                             <Card.Body>
                                 <Card.Title 
                                 className="card-title"><h2>{totalDeaths}</h2></Card.Title>
-                                <Card.Text>
-                                DEAD
-                                </Card.Text>
                             </Card.Body>
                         </Card>
                         </Col>

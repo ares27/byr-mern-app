@@ -28,8 +28,8 @@ export const NavBar = () => (
         <Navbar expand="lg">
             <Navbar.Brand href="/">
                 
-                    <img id="za-img" src={zaFlag}
-                    className="mr-1"></img>
+                    {/* <img id="za-img" src={zaFlag}
+                    className="mr-1"></img> */}
                 
                 Code Life</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
