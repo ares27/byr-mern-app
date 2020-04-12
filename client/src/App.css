@@ -51,9 +51,5 @@ form {
 
 .covid19-card {
   padding: 25px;
-}
-
-.covid19-card:hover {
   
-  border-color: red;
 }
