@@ -15,10 +15,11 @@ const Styles = styled.div`
         position: relative;
         z-index: -2;
         padding: 30px 20px;
+        margin: 0;
     }
 
     .overlay {
-        
+      
         background-color: #000;
         opacity: .6;
         position: absolute;
@@ -64,7 +65,7 @@ class Jumbotron extends Component {
             this.setState({ randomQuote: randomQuote });
          })
          .catch((err)=> {
-            console.log("Could not get random quote: ", err);
+            console.log("Couldn't get a random quote: ", err);
             //this.setState({ errorMsg: err.message });
         });
     }

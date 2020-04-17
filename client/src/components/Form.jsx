@@ -3,7 +3,9 @@ import axios from 'axios';
 import '../App.css';
 //import reactstrap components
 import { Alert, Button } from "reactstrap";
-import { Card, Form } from 'react-bootstrap';
+import { Card, Form, Row, Col } from 'react-bootstrap';
+import { SketchPicker } from 'react-color'
+// import ColorPicker from './ColorPicker';
 
 class MyForm extends Component {
     
@@ -11,6 +13,9 @@ class MyForm extends Component {
     state = { 
         title: '',
         body: '',
+        background: '#fff',
+        cardBorderColor: '',
+        displayColorPicker: false,
         posts: [],
         errorMsg: ''
     };
@@ -45,6 +50,7 @@ class MyForm extends Component {
         this.setState({
             [name]: value
         });
+    console.log(this.state);
     };
 
     //SUBMIT FORM
@@ -55,7 +61,8 @@ class MyForm extends Component {
     //build payload
     const payload = {
       title: this.state.title,
-      body: this.state.body
+      body: this.state.body,
+      cardBorderColor: this.state.cardBorderColor
     }
 
     //make HTTP POST - axios
@@ -104,7 +111,13 @@ class MyForm extends Component {
 
             return posts.map((post, index) => (
 
-                <div key={index} className="blog-post_display">                
+                <div key={index} className="blog-post_display shadow-sm " 
+                     style={{ 
+                         border: '1px solid',
+                         borderColor:post.cardBorderColor,
+                         backgroundColor: 'rgba(195, 196, 192, 0.15)'
+                     }}
+                >                
                     <h4>{post.title}</h4>
                     <p>{post.body}</p>
                     {/* <small>Date Captured: {Date(post.date)}</small>  */}
@@ -114,46 +127,119 @@ class MyForm extends Component {
     }
 
 
+    greet = () => {
+        alert("awe");
+    }
     
+    //handle color change
+    handleChangeComplete = (color) => {
+        this.setState({ cardBorderColor: color.hex });
+        console.log(this.state);
+        console.log("cardBorderColor: ", this.state.cardBorderColor);
+    };
+
+    handleClick = () => {
+        this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    };
+
+    handleClose = () => {
+        this.setState({ displayColorPicker: false })
+    };
+    
+    
+
+
 
     render() { 
 
-        //deconstruct *use this way going forward
-        //const { username, comments, topic } = this.state;
-        //console.log("state: ", this.state);
+        const popover = {
+            position: 'absolute',
+            zIndex: '2',
+        }
+
+        const cover = {
+        position: 'fixed',
+        top: '0px',
+        right: '0px',
+        bottom: '0px',
+        left: '0px',
+        }
 
         return (
             
             <React.Fragment>
-                        
+
+              
+            {/* <Button onClick={this.greet}>CLICK</Button> */}
+            
+
 
             <div className="app">
-            <h4>Comment</h4>
-            <form onSubmit={this.submit}>
+            {/* <h4>Comment</h4> */}
                 
-                    <div className="form-input">
-                        <input
-                        type="text"
-                        name="title"
-                        placeholder="Title: "
-                        value={this.state.title}
-                        onChange={this.handleChange}>
-                        </input>
-                    </div>
-                
-                    <div className="form-input">
-                        <textarea name="body" cols="30" rows="10" 
-                        value={this.state.body}
-                        onChange={this.handleChange} 
-                        placeholder="Write something...">  
-                        </textarea>
-                    </div>
-                    <Button color="primary">SUBMIT</Button>
-                </form>  
+                <div className="row p-3" >
+                   
+                   
+                    <form className="" >
 
-                 <div className="blog-post">
-                    {this.displayBlogPost(this.state.posts)}
-                 </div>        
+                        <div className="row" >                       
+                            <div className="col">               
+                                <input className="form-control" type="text" name="title" placeholder="Title: "
+                                    value={this.state.title} onChange={this.handleChange}>
+                                </input>
+                                {/* <ColorPicker /> */}
+                            </div>
+                        </div>    
+                        
+                    
+                        <div className="row" >     
+                            <div className="col">           
+                                <div className="form-input">
+                                    <textarea name="body" cols="20" rows="5" 
+                                    value={this.state.body}
+                                    onChange={this.handleChange} 
+                                    placeholder="Write something...">  
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    <button className="btn btn-outline-primary" onClick={this.submit}>SUBMIT</button>
+                                        
+                    </form>
+
+                    <div className="col">  
+                        
+                        <div className="p-1">
+                            <button onClick={ this.handleClick }>Pick Color</button>
+                            { this.state.displayColorPicker ? 
+                                <div style={ popover }> 
+                                    <div style={ cover } onClick={ this.handleClose }/>
+                                        <SketchPicker 
+                                            color={ this.state.cardBorderColor }
+                                            onChangeComplete={ this.handleChangeComplete } 
+                                        />
+                                </div> 
+                                : 
+                                null 
+                            }
+                        </div>   
+                    </div>
+
+                </div>  
+
+
+
+
+
+
+                <Row>
+                    <div className="blog-post p-3">
+                        {this.displayBlogPost(this.state.posts)}
+                    </div>
+                </Row>        
+            
+            
             </div>
 
             </React.Fragment>

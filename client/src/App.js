@@ -16,10 +16,11 @@ import Covid19News  from './components/Covid19News';
 
 
 
+
 class App extends React.Component {
   
   //contain form values
-  state = { title: '', body: '', posts: [] };
+  state = { title: '', body: '', covidCases: [] };
 
   render() { 
 
