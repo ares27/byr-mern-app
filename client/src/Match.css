@@ -8,48 +8,23 @@
 
 
 
-
-
-.card-div_display{
-    /* width: 100%;  */
+.card-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 
-.match-card {
-
-    width: 200px; 
-    margin: 10px;
-    border: 1px solid grey;
-}
-
-.match-card .row {
-    margin: 10px 0px;
-} 
-
-
-
-
-
-
-
-
-/* 
-
-
-
-
-
-
-
-
-
-/* .match-card_display {
-
-    margin: 10px 0px;
-    border-radius: 4px;
+.card-body .col, .card-body .col-4 {
     padding: 10px;
-} */
-/*
-.card-body .row {
-    margin: 10px 0px;
-} */
+    font-weight: 600;
+}
+
+
+
+
+.card-img {
+    opacity: .35;
+}

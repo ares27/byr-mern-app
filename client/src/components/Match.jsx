@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../Match.css';
 import axios from 'axios';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
+import sImg from '../assets/soccer-card-img.jpg'
 
 class Match extends Component {
     
@@ -124,42 +125,50 @@ class Match extends Component {
                 
 
 
-                    <div key={index} className="col match-card p-1">
-                        <div className="card-header text-center">
-                            Match:
-                        </div>
-                        <div className="card-body text-center">
-
-                            {/* PLAYERS */}
-                            <div className="row  p-2 justify-content-between">
-                                <div className="col-4 border">
-                                {match.player1}
+                    <div key={index} className="card m-2 p-2 rounded" 
+                        style={{width: '300px'}} >
+                        
+                        <img src={sImg} className="card-img" alt="fifa"></img>
+                        <div class="card-img-overlay">
+                                {/*         CARD HEADER         */}
+                                <div className="card-header text-center h5">
+                                    Match Day:
                                 </div>
-                                <div className="col-4 border">
-                                {match.player2}
-                                </div>
-                            </div>
+                            
+                                {/*         CARD BODY           */}
+                                <div className="card-body text-center">
+
+                                    {/* PLAYERS */}
+                                    <div className="row p-1 justify-content-between">
+                                        
+                                        <div className="col-4 border rounded">
+                                            {match.player1}
+                                        </div>
+                                        <div className="col-4 border rounded">
+                                            {match.player2}
+                                        </div>
+                                    </div>
 
 
-                            {/* VS */}
-                            <div className="row p-2">
-                                <div className="col text-center border">
-                                    VS
-                                </div>
-                            </div>
+                                    {/* VS */}
+                                    <div className="row p-2">
+                                        <div className="col text-center">
+                                            VS
+                                        </div>
+                                    </div>
 
-                            {/* SCORE */}
-                            <div className="row p-2 justify-content-between">
-                                <div className="col-4 border">
-                                    {match.score1}
-                                </div>
-                                <div className="col-4 border">
-                                    {match.score2}
-                                </div>
-                            </div>
+                                    {/* SCORE */}
+                                    <div className="row p-2 justify-content-between">
+                                        <div className="col-4 border rounded">
+                                            {match.score1}
+                                        </div>
+                                        <div className="col-4 border rounded">
+                                            {match.score2}
+                                        </div>
+                                    </div>
 
-                            {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
-                                                
+                                    {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                            </div>                      
                         </div>
                     </div>
               
@@ -179,11 +188,12 @@ class Match extends Component {
 
         return ( 
             <React.Fragment>            
-                <Jumbo fluid className="app"> 
-                <div className="container p-2"> 
+                <Jumbo fluid> 
+                
+                <div className="container border p-2 rounded shadow-sm"> 
                    
                 
-                    <form className=" p-2 score-form" onSubmit={this.submit}>
+                    <form className="score-form p-2" onSubmit={this.submit}>
                         
                         {/* <div className="row border m-1">
                             <div className="col bg-success text-center p-2">
@@ -242,10 +252,10 @@ class Match extends Component {
                     </form>
 
 
-                    <div className="row mt-3">
-                        {/* <div className="border border-danger card-div_display"> */}
+                    <div className="card-list mt-5">
+                        
                             {this.displayMatchCards(this.state.matches)}
-                        {/* </div> */}
+                         
                     </div>    
 
                 </div>
