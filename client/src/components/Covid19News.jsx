@@ -4,7 +4,7 @@ import moduleName from 'module';
 import '../App.css';
 //import reactstrap components
 import { Alert, Button } from "reactstrap";
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col, Jumbotron as Jumbo } from 'react-bootstrap';
 
 //get icons
 import { FaExclamationTriangle } from "react-icons/fa";  // Font Awesome
@@ -139,8 +139,7 @@ class COVID19News extends Component {
 
         return (
                     
-            <Container fluid
-            className="p-3 covidNews-container">
+            <Jumbo fluid>
 
                     {/* <Button onClick={this.createRandomColor}>CARDS</Button> */}
                     <Alert className="text-center" color='warning'>
@@ -168,7 +167,7 @@ class COVID19News extends Component {
                     </Row> 
                                    
 
-            </Container>  
+            </Jumbo>  
             
          
             

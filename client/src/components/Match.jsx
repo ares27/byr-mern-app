@@ -123,16 +123,16 @@ class Match extends Component {
 
             return matches.map((match, index) => (
                 
+                    
 
-
-                    <div key={index} className="card m-2 p-2 rounded" 
-                        style={{width: '300px'}} >
+                    <div key={index} className="card m-2 shadow-lg rounded" 
+                        style={{width: '300px', height: 'auto'}} >
                         
                         <img src={sImg} className="card-img" alt="fifa"></img>
                         <div class="card-img-overlay">
                                 {/*         CARD HEADER         */}
-                                <div className="card-header text-center h5">
-                                    Match Day:
+                                <div className="card-header bg-dark text-white text-center h5">
+                                    MATCH DAY
                                 </div>
                             
                                 {/*         CARD BODY           */}
@@ -144,9 +144,11 @@ class Match extends Component {
                                         <div className="col-4 border rounded">
                                             {match.player1}
                                         </div>
+
                                         <div className="col-4 border rounded">
                                             {match.player2}
                                         </div>
+
                                     </div>
 
 
@@ -166,9 +168,15 @@ class Match extends Component {
                                             {match.score2}
                                         </div>
                                     </div>
-
+                                    
+                                    <p>Date: {match.date}</p>
                                     {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
-                            </div>                      
+                                    
+                            </div>
+
+                            
+                            
+
                         </div>
                     </div>
               
@@ -178,6 +186,11 @@ class Match extends Component {
         }
     }
 
+    //convert datetime
+    convertDate = (theDate) => {
+
+        //let 
+    }
 
 
 
