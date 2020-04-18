@@ -13,6 +13,7 @@ import Jumbotron from './components/jumbotron';
 import Home from './components/Home';
 import { NoMatch } from './components/nomatch';
 import Covid19News  from './components/Covid19News';
+import Match from './components/Match';
 
 
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                   <Route exact path="/" component={Home} />
                   <Route path="/posts" component={MyForm} />
                   <Route path="/covid19news" component={Covid19News} />
+                  <Route path="/match" component={Match} />
                   <Route component={NoMatch} />
                   {/* <Route path="/about" component={About} /> */}
                 </Switch>

@@ -1,0 +1,55 @@
+.score-form {
+    width: 100%;
+}
+
+.score-form input {
+    margin: 10px 0px;
+}
+
+
+
+
+
+.card-div_display{
+    /* width: 100%;  */
+}
+
+
+.match-card {
+
+    width: 200px; 
+    margin: 10px;
+    border: 1px solid grey;
+}
+
+.match-card .row {
+    margin: 10px 0px;
+} 
+
+
+
+
+
+
+
+
+/* 
+
+
+
+
+
+
+
+
+
+/* .match-card_display {
+
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+} */
+/*
+.card-body .row {
+    margin: 10px 0px;
+} */

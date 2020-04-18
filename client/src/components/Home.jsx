@@ -11,6 +11,9 @@ class Home extends Component {
     
     render() { 
         return ( 
+            <React.Fragment>
+            
+            
             <Jumbo fluid className="app">                
                 <Container>
                 <Card className="text-center">
@@ -42,9 +45,44 @@ class Home extends Component {
                     
                     </Card.Body>
                     <Card.Footer className="text-muted">The MERN</Card.Footer>
-                    </Card>
+                </Card>
                 </Container>
             </Jumbo>
+            
+            
+            <Jumbo fluid className="app">                
+                <Container>
+                <Card className="text-center">
+                    <Card.Header>New Feature</Card.Header>
+                    <Card.Body>
+                        <Card.Title>GOOD GAMES</Card.Title>
+                        <Card.Text>
+                        Games we played during COVID-<span style={{color: 'red'}}>19</span> times.
+                        </Card.Text>
+                        
+
+                        <Row>
+                            <Col>
+                                <Button 
+                                variant="success" 
+                                href="/match"
+                                className="homeBtns">TENNIS</Button>
+                            </Col>
+                        </Row>
+                        
+                        
+                    
+                    
+                    
+                    
+                    </Card.Body>
+                    <Card.Footer className="text-muted">GAMES WE PLAYED.</Card.Footer>
+                </Card>
+                </Container>
+            </Jumbo>
+            
+            
+            </React.Fragment>
          );
     }
 }
