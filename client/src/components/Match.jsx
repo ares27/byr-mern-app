@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import '../Match.css';
 import axios from 'axios';
-import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
+import { Jumbotron as Jumbo, Card, Button, ButtonGroup, Container, Row, Col } from 'react-bootstrap';
 import sImg from '../assets/soccer-card-img.jpg'
+import avatarImg from '../assets/user.svg'
+
+import  MyModal  from './Test';
+
 
 class Match extends Component {
     
@@ -16,7 +20,8 @@ class Match extends Component {
         player2: '',
         score2: '',
         matches: [],
-        errorMsg: ''
+        errorMsg: '',
+        isModalOpen: false
     };
 
     componentDidMount = () => {
@@ -126,7 +131,7 @@ class Match extends Component {
                     
 
                     <div key={index} className="card m-2 shadow-lg rounded" 
-                        style={{width: '300px', height: 'auto'}} >
+                        style={{width: '300px'}} >
                         
                         <img src={sImg} className="card-img" alt="fifa"></img>
                         <div class="card-img-overlay">
@@ -138,15 +143,18 @@ class Match extends Component {
                                 {/*         CARD BODY           */}
                                 <div className="card-body text-center">
 
-                                    {/* PLAYERS */}
+                                    {/* AVATARS */}
                                     <div className="row p-1 justify-content-between">
                                         
                                         <div className="col-4 border rounded">
-                                            {match.player1}
+                                            {/* {match.player1} */}
+                                            <img src={avatarImg} 
+                                                style={{width: '75%'}} />
                                         </div>
 
                                         <div className="col-4 border rounded">
-                                            {match.player2}
+                                            <img src={avatarImg} 
+                                                style={{width: '75%'}} />
                                         </div>
 
                                     </div>
@@ -161,21 +169,19 @@ class Match extends Component {
 
                                     {/* SCORE */}
                                     <div className="row p-2 justify-content-between">
-                                        <div className="col-4 border rounded">
+                                        <div className="col-4 border rounded h4">
                                             {match.score1}
                                         </div>
-                                        <div className="col-4 border rounded">
+                                        <div className="col-4 border rounded h4">
                                             {match.score2}
                                         </div>
                                     </div>
+
+                                   
                                     
-                                    <p>Date: {match.date}</p>
                                     {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
                                     
                             </div>
-
-                            
-                            
 
                         </div>
                     </div>
@@ -186,21 +192,76 @@ class Match extends Component {
         }
     }
 
-    //convert datetime
-    convertDate = (theDate) => {
+   
 
-        //let 
+
+    openModal = () => {
+        
+        this.setState({
+            modalOpen: true
+        })
+
+        console.log("openModal State", this.state);
     }
-
-
-
 
     render() { 
 
         console.log("state: ", this.state);
 
         return ( 
-            <React.Fragment>            
+            <React.Fragment>
+
+
+            
+
+{/* 
+                <button className="btn btn-dark"
+                    onClick={(e) => this.setState({ isModalOpen: true })}>OPEN</button>
+                <MyModal 
+                    isModalOpen={this.state.isModalOpen} 
+                    onClose={(e) => this.setState({ isModalOpen: false})}>
+                    This is the dialog on App page.
+                    I am a new DIV in parent element.
+
+                
+
+                </MyModal>
+ */}
+
+
+
+                <Jumbo fluid className="app m-0">                
+                    <Container>
+                    <Card className="text-center">
+                        <Card.Header>Featured</Card.Header>
+                        <Card.Body>
+                            
+                            <Row>
+                                <Col>
+                                    
+                                    <Button variant="primary" href="#" 
+                                    className="homeBtns" >+PLAYER
+                                    </Button>
+                                    
+                                    <Button variant="warning" href="#" className="homeBtns">TABLES
+                                    </Button>
+                                </Col>
+                            </Row>
+                            
+                            
+                        
+                        
+                        
+                        
+                        </Card.Body>
+                        <Card.Footer className="text-muted">The MERN</Card.Footer>
+                    </Card>
+                    </Container>
+                </Jumbo>
+
+              
+
+
                 <Jumbo fluid> 
                 
                 <div className="container border p-2 rounded shadow-sm"> 
@@ -273,6 +334,8 @@ class Match extends Component {
 
                 </div>
             </Jumbo>
+            
+            
             </React.Fragment>
          );
     }
