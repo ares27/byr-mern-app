@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const BlogPost = require('../models/blogPost');
 const Match = require('../models/match');
+const Player = require('../models/player')
+
+
+
+
+
+
 
 
 
@@ -17,8 +24,6 @@ router.get('/', (req, res) => {
             console.log("error: ", error);
         })
 });
-
-
 
 //new BlogPost
 router.post('/save', (req, res) => {
@@ -38,6 +43,31 @@ router.post('/save', (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+//********         ALL MATCH ROUTES                                 */
+//get all Matches
+router.get('/matches', (req, res) => {
+
+    Match.find({ })
+        .then((data) => {
+            console.log("Data: ", data);
+            res.json(data);
+        })
+        .catch((error) => {
+            console.log("error: ", error);
+        })
+});
+
 //new Match
 router.post('/match', (req, res) => {
     
@@ -56,11 +86,26 @@ router.post('/match', (req, res) => {
     }); 
 });
 
+//////////////////////////////////////////////////////////////////////
 
-//MATCH ROUTES
-router.get('/matches', (req, res) => {
 
-    Match.find({ })
+
+
+
+
+
+
+
+
+
+
+
+
+//********         ALL PLAYER ROUTES                                 */
+//get all Players
+router.get('/players', (req, res) => {
+
+    Player.find({ })
         .then((data) => {
             console.log("Data: ", data);
             res.json(data);
@@ -70,6 +115,25 @@ router.get('/matches', (req, res) => {
         })
 });
 
+//new Player
+router.post('/player', (req, res) => {
+    
+    //set data obj
+    const data = req.body;
+    //set new Match object for data from req.body
+    const newPlayer = new Player(data);
+    //res.json({ msg: "Match created successfully." });
+    
+    newPlayer.save((err) => {
+         if(err) {
+             res.status(500).json({ msg: "Error"});
+         } else {
+             res.json({ msg: "Match created successfully." });
+         }
+    }); 
+});
+
+//////////////////////////////////////////////////////////////////////
 
 
 
