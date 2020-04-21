@@ -5,7 +5,6 @@ import { Jumbotron as Jumbo, Card, Button, ButtonGroup, Container, Row, Col } fr
 import sImg from '../assets/soccer-card-img.jpg'
 import avatarImg from '../assets/user.svg'
 
-import  MyModal  from './Test';
 
 
 class Match extends Component {
