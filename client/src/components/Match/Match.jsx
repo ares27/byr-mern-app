@@ -222,7 +222,7 @@ class Match extends Component {
                         <Card.Header>Featured</Card.Header>
                         <Card.Body>
                             
-                            <Row>
+                            {/* <Row>
                                 <Col>
                                                            
                                     <AddPlayer />
@@ -230,7 +230,23 @@ class Match extends Component {
                                 <Col>
                                     <AddMatch />
                                 </Col>
-                            </Row>
+                            </Row> */}
+
+                            <div className="row ">
+                            <div className="col">
+                            </div>
+                                
+                                <div className="col">
+                                    <AddPlayer />
+                                   
+                                </div>
+                                <div className="col">
+                                    <AddMatch />
+                                   
+                                </div>
+                                <div className="col">
+                            </div>
+                            </div>
                             
                             
                         

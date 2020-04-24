@@ -153,7 +153,7 @@ class AddMatch extends Component {
         console.log("state: ", this.state);
 
         return ( 
-            <div className="container rounded shadow-sm"> 
+            <div className="container rounded"> 
             
                 
                 <Modal
