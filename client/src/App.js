@@ -13,7 +13,7 @@ import Jumbotron from './components/jumbotron';
 import Home from './components/Home';
 import { NoMatch } from './components/nomatch';
 import Covid19News  from './components/Covid19News';
-import Match from './components/Match';
+import Match from './components/Match/Match';
 
 
 

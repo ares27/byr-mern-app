@@ -128,7 +128,7 @@ router.post('/player', (req, res) => {
          if(err) {
              res.status(500).json({ msg: "Error"});
          } else {
-             res.json({ msg: "Match created successfully." });
+             res.json({ msg: "Player created successfully..." });
          }
     }); 
 });
