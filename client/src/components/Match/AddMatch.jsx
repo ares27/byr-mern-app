@@ -70,7 +70,8 @@ class AddMatch extends Component {
                 this.resetUserInputs();      
                 
                 //call latest blogPost when submit
-                this.getAllPlayers();
+                setTimeout(window.location.reload(true), 3000);
+                
             })
             .catch( (err) => {
                 console.log('Error: ', err);
@@ -157,100 +158,70 @@ class AddMatch extends Component {
             
                 
                 <Modal
-                    size="lg"
+                    size="sm"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
-                    id="add-player-modal"
+                    id="add-match-modal"
                     show={this.state.modalShow}
                     onHide={this.modalToggle}
                 >
                 
-                <Modal.Header 
-                    className="h3 justify-content-center bg-dark text-white m-0"
-                >
-                CAPTURE SCORES  
+                <Modal.Header closeButton className="bg-dark text-white text-center">
+                    <h4 class="modal-title w-100">ADD PLAYER</h4>
                 </Modal.Header>
                  
                     <Modal.Body
                         className="justify-content-center bg-dark text-white m-0">
-                        <hr />
-                        
-                        <div className="row justify-content-center">
-                         
-                         FORM
+                    
+                            <form id="add-match-form">
 
-
-
-                        <form 
-                            className="score-form p-2" 
-                            
-                        >
-                                
-                                {/* PLAYERS ROW */}
-                                <div className="row mt-4">
-                                    
-                                    <div className="col">
-                                        <select 
+                            <div className="row">
+                                <div className="col">
+                                    <label htmlFor="p1Name">Player 1:</label>
+                                    <select 
                                             value={this.state.p1Name} 
                                             name="p1Name" 
                                             onChange={this.handleChange}
                                             className="form-control" >
-                                                <option>-- Select Player --</option>
+                                                <option>- Player -</option>
                                                 {this.displayPlayerOptions(this.state.allPlayers)}
-                                        </select>
-                                    </div>
-
-                                    <div className="col">
+                                    </select>
+                                </div>
+                                <div className="col">
+                                        <label htmlFor="p2Name">Player 2:</label>
                                         <select 
                                             value={this.state.p2Name} 
                                             name="p2Name" 
                                             onChange={this.handleChange}
                                         className="form-control" >
-                                            <option selected>-- Select Player --</option>
+                                            <option selected>- Player -</option>
                                             {this.displayPlayerOptions(this.state.allPlayers)}
                                         </select>
-                                    </div>
-
                                 </div>
+                            </div>
 
-                                {/* SCORES ROW */}
-                                <div className="row">
-                                
-                                    <div className="col">
-                                        <input type="text" 
+
+                            <div className="row">
+                                <div className="col">
+                                    <label htmlFor="p1Score">Score:</label>
+                                    <input type="number" 
                                             value={this.state.p1Score} 
                                             name="p1Score" 
                                             onChange={this.handleChange} 
                                             className="form-control" placeholder="Score: " />
-                                    </div>
-                                    
-                                    <div className="col">
-                                        <input type="text" 
+                                </div>
+                                <div className="col">
+                                        <label htmlFor="p2Score">Score:</label>
+                                        <input type="number" 
                                         value={this.state.p2Score} 
                                         name="p2Score" 
                                         onChange={this.handleChange} 
                                         className="form-control" placeholder="Score: " />
-                                    </div>
-                                
                                 </div>
-                                
-                                {/* <button className="btn btn-primary btn-block mt-2">SUBMIT</button> */}
+                            </div>
                             
                             </form>
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
-
-                     
+ 
 
 
                     </Modal.Body>
@@ -259,7 +230,7 @@ class AddMatch extends Component {
                     className="h3 justify-content-center bg-dark text-white m-0"
                 >
                     <Button variant="success" onClick={this.submit}>Submit</Button>
-                    <Button onClick={this.modalToggle}>Close</Button>
+                    <Button variant="secondary" onClick={this.modalToggle}>Close</Button>
                 </Modal.Footer>
            
             </Modal>
