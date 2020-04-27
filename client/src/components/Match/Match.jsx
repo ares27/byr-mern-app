@@ -6,6 +6,7 @@ import sImg from '../../assets/soccer-card-img.jpg'
 import avatarImg from '../../assets/user.svg'
 import { AddPlayer } from '../Player/AddPlayer';
 import AddMatch from './AddMatch';
+import { MatchCard } from './MatchCard';
 
 
 
@@ -244,8 +245,11 @@ class Match extends Component {
                                     <AddMatch />
                                    
                                 </div>
+
                                 <div className="col">
-                            </div>
+                                    
+                                </div>
+
                             </div>
                             
                             
@@ -261,14 +265,12 @@ class Match extends Component {
 
               
 
-
-                <Jumbo fluid> 
+{/* 
+            <Jumbo fluid> 
                 
                 <div className="container border p-2 rounded shadow-sm"> 
                    
-                
-                    
-
+                   MATCHES
 
                     <div className="card-list mt-5">
                         
@@ -277,8 +279,23 @@ class Match extends Component {
                     </div>    
 
                 </div>
+            </Jumbo> */}
+
+
+
+
+            {/* MATCH CARDS */}
+            <Jumbo fluid className="app m-0"> 
+                
+              <MatchCard />
             </Jumbo>
-            
+
+
+
+
+
+
+
             
             </React.Fragment>
          );

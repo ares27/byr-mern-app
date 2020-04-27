@@ -6,7 +6,7 @@ import './AddPlayer.css'
 export const AddPlayer = (props) => {
 
     const [modalShow, setModalShow] = useState(false);
-    const [name, setName] = useState({ fname: '', aka: '', slogan: ''});
+    const [name, setName] = useState({ fname: '', aka: '', slogan: '', profilepic: null});
     
     //SUBMIT PLAYER
     const handleSubmit = (evt) => {
@@ -14,7 +14,9 @@ export const AddPlayer = (props) => {
         console.log(`Adding Player: ${name.fname}, slogan:  ${name.slogan}`);
         
         //build payload
-        const payload = { name: name.fname, aka: name.aka, slogan: name.slogan };
+        const payload = { 
+                    name: name.fname, aka: name.aka, 
+                    slogan: name.slogan, profilepic: name.profilepic };
 
         console.log("payload: ", payload);
   
@@ -46,9 +48,25 @@ export const AddPlayer = (props) => {
     }
 
 
+    
+
+
+
+    //handleFileUpload
+    const handleFileUpload = e => {
+        console.log(e.target.files[0]);
+        
+    }
+
+
+ 
+
 
 
     return (
+
+        
+
         <div>
             <Modal  size="sm" 
                     centered
@@ -88,6 +106,15 @@ export const AddPlayer = (props) => {
                         onChange={e => setName({...name, slogan: e.target.value })}
                     />
                     </div>
+
+
+                    {/* <div className="form-group">
+                        <label htmlFor="profile-pic">Upload Photo:</label>
+                        <input type="file" className="form-control"  
+                        onChange={e => setName({...name, profilepic: e.target.files[0] })}
+                    />
+                    </div> */}
+
                 </form>
                
                 
@@ -103,7 +130,14 @@ export const AddPlayer = (props) => {
                 <Button variant="secondary" onClick={() => setModalShow(false)}>
                     Close
                 </Button>
+
+                {/* <Button variant="secondary" onClick={() => console.log(name)}>
+                    log
+                </Button> */}
+
             </Modal.Footer>
+
+
 
 
 
