@@ -6,19 +6,15 @@ import './AddPlayer.css'
 export const AddPlayer = (props) => {
 
     const [modalShow, setModalShow] = useState(false);
-
-    const [name, setname] = useState('');
-    const [aka, setaka] = useState('');
-    const [slogan, setslogan] = useState('');
+    const [name, setName] = useState({ fname: '', aka: '', slogan: ''});
     
     //SUBMIT PLAYER
     const handleSubmit = (evt) => {
-
         evt.preventDefault();
-        console.log(`Adding Player: ${name}, slogan:  ${slogan}`);
+        console.log(`Adding Player: ${name.fname}, slogan:  ${name.slogan}`);
         
         //build payload
-        const payload = { name: name, aka: aka, slogan: slogan };
+        const payload = { name: name.fname, aka: name.aka, slogan: name.slogan };
 
         console.log("payload: ", payload);
   
@@ -36,13 +32,17 @@ export const AddPlayer = (props) => {
         .catch( (err) => {
              console.log('Error adding player: ', err);
         })
+
+       window.location.reload(true);
     }
 
     //RESET FORM INPUT
     const resetUserInputs = () => {
-        setname('');
-        setaka('');
-        setslogan('');
+        setName({ ...name,
+            fname: '',
+            aka: '',
+            slogan: ''
+        })
     }
 
 
@@ -50,101 +50,112 @@ export const AddPlayer = (props) => {
 
     return (
         <div>
-            <Modal
-                    {...props}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
+            <Modal  
+                    size="sm"
                     centered
                     id="add-player-modal"
                     show={modalShow}
                     onHide={() => setModalShow(false)}
             >
                 
-                <Modal.Header 
-                    className="h3 justify-content-center bg-dark text-white m-0"
-                >
-                ADD PLAYER  
+
+                <Modal.Header closeButton 
+                    className="bg-dark text-white text-center">
+                    <h4 class="modal-title w-100">ADD PLAYER</h4>
                 </Modal.Header>
-                 
-                    <Modal.Body
-                        className="justify-content-center bg-dark text-white m-0">
-                        <hr />
-                        
-                        <div className="row justify-content-center">
-                        <form className="" id="add-player-form">
-                                                
-                            <div className="row justify-content-center">
-                                <div className="col-2">
-                                    Name: 
-                                </div>
-                                <div className="col-6">
-                                    <input type="text" className="form-control" value={name}       
-                                    onChange={e => setname(e.target.value)}
-                                    id="fname" 
-                                    placeholder="Name: "/>
-                                </div>
-                            </div>
-
-                            <div className="row justify-content-center">
-                                <div className="col-2">
-                                    AKA: 
-                                </div>
-                                <div className="col-6">
-                                    <input type="text" className="form-control" value={aka} onChange={e => setaka(e.target.value)}
-                                    id="lname" 
-                                    placeholder="AKA (Also Known As)"/>
-                                </div>
-                            </div>
-
-                            <div className="row justify-content-center">
-                                <div className="col-2">
-                                    Slogan: 
-                                </div>
-                                <div className="col-6">
-                                    <input type="text" className="form-control" value={slogan} onChange={e => setslogan(e.target.value)}
-                                    id="lname" 
-                                    placeholder="Slogan...   eg: 'Just do it...'"/>
-                                </div>
-                            </div>
-
-                            {/* <div className="form-group">
-                                <label for="defaultCheck1">Name: </label>
-                                <input type="text" className="form-control" value={name}       
-                                onChange={e => setname(e.target.value)}
-                                id="defaultCheck1" 
-                                placeholder="Name: "/>
-                            </div> */}
-
-                            {/* <div className="form-group">
-                                <label>AKA</label>
-                                <input type="text" className="form-control" value={aka} onChange={e => setaka(e.target.value)}
-                                id="lname" 
-                                placeholder="AKA (Also Known As)"/>
-                            </div> 
-
-                            <div className="form-group">
-                                <label>Slogan</label> 
-                                <input type="text" className="form-control" value={slogan} onChange={e => setslogan(e.target.value)}
-                                id="lname" 
-                                placeholder="Slogan...   eg: 'Just do it...'"/>
-                            </div>  */}
-
-
-                            {/* <input className="btn btn-success" type="submit" value="Submit" /> */}
-                        </form>
-                        </div>
 
 
 
-                    </Modal.Body>
-              
-                <Modal.Footer
-                    className="h3 justify-content-center bg-dark text-white m-0"
-                >
-                    <Button variant="outline-success" onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={() => setModalShow(false)}>Close</Button>
-                </Modal.Footer>
+
+                <Modal.Body className="bg-dark text-white">
+                <form id="add-player-form">
+                <div className="form-group">
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" className="form-control" value={name.fname} 
+                        id="name" placeholder="Name: "
+                        onChange={e => setName({...name, fname: e.target.value })}
+                    />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="lastname">AKA:</label>
+                        <input type="text" className="form-control" value={name.lname} id="lastname" placeholder="Also Known As" 
+                        onChange={e => setName({...name, aka: e.target.value })}
+                    />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="lastname">Slogan:</label>
+                        <input type="text" className="form-control" value={name.slogan} id="lastname" placeholder="Just do it!" 
+                        onChange={e => setName({...name, slogan: e.target.value })}
+                    />
+                    </div>
+                </form>
+                {/* <form onSubmit={handleSubmit}>
+                    
+                    <div className="form-group">
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" className="form-control" value={name.fname} 
+                        id="name" placeholder="Name: "
+                        onChange={e => setName({...name, fname: e.target.value })}
+                    />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="lastname">AKA:</label>
+                        <input type="text" className="form-control" value={name.lname} id="lastname" placeholder="Also Known As" 
+                        onChange={e => setName({...name, aka: e.target.value })}
+                    />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="lastname">Slogan:</label>
+                        <input type="text" className="form-control" value={name.slogan} id="lastname" placeholder="Just do it!" 
+                        onChange={e => setName({...name, slogan: e.target.value })}
+                    />
+                    </div>
+
+                    <button className="btn btn-success btn-block" type="submit">SUBMIT</button>
+                </form> */}
+                
+
+                </Modal.Body>
+
+                {/*
+                <div className="card">
+                 <div className="card-header text-center">
+                    ADD PLAYER
+                     <img width="15" height="15" src={closeBtn} onClick={() => setShow(false)}/> 
+                    
+                    <button className="btn btn-sm btn-outline-danger" id="close-btn"
+                    onClick={() => setModalShow(false)}>X</button> 
+                </div> 
+                    <div className="card-body">
+                    
+                    </div>
+                </div>
+                */}
            
+
+
+
+                    <Modal.Footer className="bg-dark text-white">
+                        <Button variant="success" onClick={handleSubmit}>
+                            SAVE
+                        </Button>
+                        <Button variant="secondary" onClick={() => setModalShow(false)}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+
+
+
+
+
+
+
+
+
             </Modal>
 
             <Button variant="primary" onClick={() => setModalShow(true)}>
