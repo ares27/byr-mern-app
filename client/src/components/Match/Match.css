@@ -7,7 +7,16 @@
     width: 30px;
  }
 
- #match-card {
+#match-card {
      width: 250px;
- }
+}
  
+
+
+
+@media only screen and (max-width: 600px) {
+    #match-card {
+        margin-left: 100px;
+        width: 75%;
+    }
+  }

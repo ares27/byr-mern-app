@@ -51,10 +51,10 @@ export const MatchCard = () => {
 
     return (
         <>  
-            <Container className="">
+            <Container>
             
 
-                <div className="row flex-container wrap">
+                <div className="row flex-container wrap justify-content-center p-1">
                 {
                     cards.map(card => 
                         // <div className="col m-1" key={card._id}>
